@@ -1,8 +1,12 @@
 # Ex.No: 4  Implementation of Kinematic movement -seek and Flee behavior in Unity
-### DATE:                                                                            
-### REGISTER NUMBER : 
+### DATE:           12-05-2026                                                                 
+### REGISTER NUMBER : 212224240119
+
+
 ### AIM: 
 To write a program to simulate the process of seek and Flee behavior in Unity without NavigationMeshAgent. 
+
+
 ### Algorithm:
 1. Create a New Unity Project by Open the  Unity Hub and create a new 3D Project,Name the project (e.g., SeekBehaviorDemo).
 2. Create the Moving Object
@@ -25,63 +29,39 @@ To write a program to simulate the process of seek and Flee behavior in Unity wi
     
 ### Program:
 ```
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class seekScript : MonoBehaviour
+public class NewMonoBehaviourScript : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public Transform target;  // The object to seek
-    public float speed = 5f;  // Movement speed
-    void Start()
-    {
-        
-    }
+    public Transform o1;
+    public Transform target;
+    public Transform o3; 
+    public float speed = 4f;
+    void Start()  {  }
+    void flee()
+   {
+    Vector3 dir = (o3.position - target.position).normalized;
+    o3.position += dir * speed *Time.deltaTime;
+   }
+   void seek()
+   {
+    Vector3 dir1 = (target.position-o1.position).normalized;
+    o1.position += dir1* speed * Time.deltaTime;
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (target == null) return;  // Exit if no target is assigned
-
-        // Calculate the desired direction
-        Vector3 direction = (target.position - transform.position).normalized;
-
-        // Move the object towards the target
-        transform.position += direction * speed * Time.deltaTime;
-    }
+   }
+   void Update()
+   {
+      seek();
+      flee();  
+   }
 }
+
 ```
-```
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class fleeScript : MonoBehaviour
-{
-    // Start is called before the first frame update
-    public Transform target;  // The object to seek
-    public float speed = 5f;  // Movement speed
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (target == null) return;  // Exit if no target is assigned
-
-        // Calculate the desired direction
-        Vector3 direction = (transform.position-target.position).normalized;
-
-        // Move the object towards the target
-        transform.position += direction * speed * Time.deltaTime;
-    }
-}
-```
 ### Output:
 
+
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/403a252c-fc49-4370-bdd2-b8397ae8051e" />
 
 
 
